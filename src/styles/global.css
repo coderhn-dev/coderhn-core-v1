@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Register your semantic names here */
+  --color-card: var(--card-bg);
+  --color-card-text: var(--card-text);
+  --color-card-muted: var(--card-muted);
+}
+
+/* Light Mode Values (Default) */
+:root {
+  --card-bg: white;
+  --card-text: theme('colors.gray.900');
+  --card-muted: theme('colors.gray.500');
+}
+
+/* Dark Mode Values */
+.dark {
+  --card-bg: theme('colors.gray.800');
+  --card-text: theme('colors.white');
+  --card-muted: theme('colors.gray.400');
+}

@@ -1,0 +1,66 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { siteInfo } from "../consts/site-info";
+import Header from "../components/shared/Header.astro";
+import "../styles/global.css";
+import Footer from "../components/shared/Footer.astro";
+
+interface Props {
+	title?: string;
+	image?: string;
+	description?: string;
+}
+
+const {
+	title = siteInfo.title,
+	description = siteInfo.description,
+	image,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+
+		<meta name="description" content={description} />
+		<meta name="author" content={"Oscar Blanco"} />
+
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+
+		<title>{title}</title>
+		<ClientRouter />
+		<script is:inline>
+			const theme = (() => {
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
+				}
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					return "dark";
+				}
+				return "light";
+			})();
+
+			if (theme === "light") {
+				document.documentElement.classList.remove("dark");
+			} else {
+				document.documentElement.classList.add("dark");
+			}
+		</script>
+	</head>
+	<body>
+		<!-- <Navbar /> -->
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>

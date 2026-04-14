@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import "./../styles/global.css";
+---
+<section
+  class="relative h-screen min-h-[600px] flex items-center overflow-hidden"
+>
+  <div class="absolute inset-0">
+    <Image
+      src="/assets/images/LogoTransparent.png"
+      alt="Construction Site"
+      class="w-full h-full object-cover"
+      width={2070}
+      height={1380}
+      decoding="async"
+      fetchpriority="high"
+    />
+    <div
+      class="absolute inset-0 
+    /* Colores para Modo Claro (por defecto) */
+    bg-linear-to-r from-slate-200/90 via-slate-100/80 to-transparent 
+    
+    /* Colores para Modo Oscuro (se activan con la clase .dark) */
+    dark:from-slate-950/95 dark:via-slate-900/80 dark:to-slate-900/50"
+    >
+    </div>
+  </div>
+
+  <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl">
+      <h1
+        class="text-4xl md:text-6xl lg:text-7xl font-bold  text-gray-900 dark:text-white mb-6 leading-tight"
+      >
+        CoderHN
+        
+      </h1>
+
+      <p
+        class="text-xl md:text-2xl  text-gray-900 dark:text-white mb-8 max-w-2xl leading-relaxed"
+      >
+        Sitio en Construcción 🛠️
+      </p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg
+      class="w-6 h-6  text-gray-900 dark:text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
